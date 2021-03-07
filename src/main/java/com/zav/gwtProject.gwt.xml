@@ -8,7 +8,7 @@
 <module rename-to='gwtproject'>
   <inherits name='com.google.gwt.user.User'/>
   <inherits name='com.google.gwt.user.theme.clean.Clean'/>
-  <entry-point class='com.zav.client.gwtProject'/>
+  <entry-point class='com.zav.client.GwtProject'/>
 
   <source path='client'/>
   <source path='shared'/>

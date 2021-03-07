@@ -11,7 +11,7 @@ import com.zav.shared.Sex;
 import com.zav.shared.User;
 
 
-public class gwtProject implements EntryPoint {
+public class GwtProject implements EntryPoint {
     private HelloServiceAsync helloService = GWT.create(HelloService.class);
 
   public void onModuleLoad() {
