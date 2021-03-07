@@ -2,24 +2,38 @@ package com.zav.client;
 
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.zav.shared.Sex;
+import com.zav.shared.User;
 
 
 public class gwtProject implements EntryPoint {
+    private HelloServiceAsync helloService = GWT.create(HelloService.class);
 
   public void onModuleLoad() {
-      VerticalPanel verticalPanel = new VerticalPanel();
-      HorizontalPanel mainPanel = new HorizontalPanel();
       Button sendButton = new Button("Send");
-      Label label = new Label("Label");
-      verticalPanel.add(sendButton);
-      verticalPanel.add(label);
-      mainPanel.add(verticalPanel);
-        RootPanel.get("mainPanel").add(mainPanel);
+      Label label = new Label("my label");
+      sendButton.addStyleName("newStyle");
 
-        sendButton.addClickHandler(clickEvent -> label.setText("new Text"));
+        RootPanel.get("mainPanel").add(sendButton);
+        RootPanel.get("mainPanel").add(label);
 
+        sendButton.addClickHandler(clickEvent -> {
+            helloService.sayHello(new User("Anton", Sex.MALE), new AsyncCallback<String>() {
+                @Override
+                public void onFailure(Throwable throwable) {
+                    label.setText("error");
+                }
+
+                @Override
+                public void onSuccess(String s) {
+                    label.setText(s);
+                }
+       });
+    });
   }
 }
