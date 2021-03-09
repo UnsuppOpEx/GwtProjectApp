@@ -5,14 +5,30 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
+<!--    <servlet>-->
+<!--        <servlet-name>helloServlet</servlet-name>-->
+<!--        <servlet-class>com.zav.server.HelloServiceImpl</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>helloServlet</servlet-name>-->
+<!--        <url-pattern>/gwtApp/hello</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+    <!-- Servlets -->
     <servlet>
-        <servlet-name>helloServlet</servlet-name>
-        <servlet-class>com.zav.server.HelloServiceImpl</servlet-class>
+        <servlet-name>gwtServlet</servlet-name>
+        <servlet-class>com.zav.server.GwtAppServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>helloServlet</servlet-name>
-        <url-pattern>/gwtproject/hello</url-pattern>
+        <servlet-name>gwtServlet</servlet-name>
+        <url-pattern>/gwtApp/gwtAppService</url-pattern>
     </servlet-mapping>
+
+    <!-- Default page to serve -->
+    <welcome-file-list>
+        <welcome-file>GwtApp.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>
